@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SceneCURPController">
+   <children>
+      <TextField fx:id="txtApellidoPaterno" layoutX="184.0" layoutY="56.0" />
+      <TextField fx:id="txtApellidoMaterno" layoutX="184.0" layoutY="92.0" />
+      <TextField fx:id="txtNombres" layoutX="184.0" layoutY="126.0" />
+      <Label layoutX="53.0" layoutY="96.0" text="Apellido Materno:" />
+      <Label layoutX="51.0" layoutY="56.0" prefHeight="17.0" prefWidth="108.0" text="Apellido Paterno:" />
+      <Label layoutX="53.0" layoutY="130.0" text="Nombres(s):" />
+      <Label layoutX="53.0" layoutY="169.0" text="Entidad:" />
+      <Label layoutX="53.0" layoutY="211.0" text="Fecha de Nacimiento:" />
+      <Label layoutX="54.0" layoutY="250.0" text="Género:" />
+      <Button fx:id="btnObtener" layoutX="270.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnObtener_ActionPerformed" text="Obtener" />
+      <TextField fx:id="txtCURP" editable="false" layoutX="184.0" layoutY="287.0" />
+      <Button fx:id="btnBorrar" layoutX="184.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnBorrar_ActionPerformed" text="Borrar" />
+      <Label layoutX="54.0" layoutY="291.0" text="CURP:" />
+      <ChoiceBox fx:id="choiceGenero" layoutX="270.0" layoutY="246.0" prefHeight="25.0" prefWidth="64.0" />
+      <DatePicker fx:id="dpFechaNacimiento" layoutX="184.0" layoutY="207.0" prefHeight="25.0" prefWidth="149.0" />
+      <ComboBox fx:id="cmbEntidad" layoutX="184.0" layoutY="165.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
