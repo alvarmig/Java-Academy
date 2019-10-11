@@ -10,7 +10,10 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,7 +33,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Tblusuario.findByIdusuario", query = "SELECT t FROM Tblusuario t WHERE t.idusuario = :idusuario")
     , @NamedQuery(name = "Tblusuario.findByEmail", query = "SELECT t FROM Tblusuario t WHERE t.email = :email")
     , @NamedQuery(name = "Tblusuario.findByUsuario", query = "SELECT t FROM Tblusuario t WHERE t.usuario = :usuario")
-    , @NamedQuery(name = "Tblusuario.findByPassword", query = "SELECT t FROM Tblusuario t WHERE t.password = :password")
     , @NamedQuery(name = "Tblusuario.findByCreacion", query = "SELECT t FROM Tblusuario t WHERE t.creacion = :creacion")
     , @NamedQuery(name = "Tblusuario.findByUltimoAcceso", query = "SELECT t FROM Tblusuario t WHERE t.ultimoAcceso = :ultimoAcceso")
     , @NamedQuery(name = "Tblusuario.findByActivo", query = "SELECT t FROM Tblusuario t WHERE t.activo = :activo")})
@@ -38,6 +40,7 @@ public class Tblusuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idusuario")
     private Integer idusuario;
@@ -48,8 +51,13 @@ public class Tblusuario implements Serializable {
     @Column(name = "usuario")
     private String usuario;
     @Basic(optional = false)
+    @Lob
     @Column(name = "password")
-    private String password;
+    private byte[] password;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "keyPassword")
+    private byte[] keyPassword;
     @Basic(optional = false)
     @Column(name = "creacion")
     @Temporal(TemporalType.TIMESTAMP)
@@ -68,19 +76,14 @@ public class Tblusuario implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public Tblusuario(Integer idusuario, String email, String usuario, String password, Date creacion, short activo) {
+    public Tblusuario(Integer idusuario, String email, String usuario, byte[] password, byte[] keyPassword, Date creacion, short activo) {
         this.idusuario = idusuario;
         this.email = email;
         this.usuario = usuario;
         this.password = password;
+        this.keyPassword = keyPassword;
         this.creacion = creacion;
         this.activo = activo;
-    }
-
-    public Tblusuario(String email, String usuario) {
-
-        this.email = email;
-        this.usuario = usuario;
     }
 
     public Integer getIdusuario() {
@@ -107,12 +110,20 @@ public class Tblusuario implements Serializable {
         this.usuario = usuario;
     }
 
-    public String getPassword() {
+    public byte[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(byte[] password) {
         this.password = password;
+    }
+
+    public byte[] getKeyPassword() {
+        return keyPassword;
+    }
+
+    public void setKeyPassword(byte[] keyPassword) {
+        this.keyPassword = keyPassword;
     }
 
     public Date getCreacion() {

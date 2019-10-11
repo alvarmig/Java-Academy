@@ -35,8 +35,8 @@
     -->
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="index" />
+          p:viewName="Login" />
     
-          <bean name="loginController" class="Persistencia.DAO.LoginDAO"></bean>
+          <bean name="loginController" class="Persistencia.DAO.tblUsuarioDAO"></bean>
 
 </beans>

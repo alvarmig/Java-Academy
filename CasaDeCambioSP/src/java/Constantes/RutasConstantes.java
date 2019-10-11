@@ -22,5 +22,5 @@ public class RutasConstantes {
     /**
      * Ruta por defecto para acceder al registro 18/09/2019
      */
-    public static final String RUTA_REGISTRO = "/WEB-INF/jsp/Home.jsp";
+    public static final String RUTA_REGISTRO = "/WEB-INF/jsp/Registro.jsp";
 }
