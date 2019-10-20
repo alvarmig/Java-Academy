@@ -17,6 +17,7 @@ public class CountFrequency {
                 tempMap.put(arr[i], 1);
             }
         }
+        System.out.println(tempMap);
 
         tempMap.entrySet().forEach(entry -> {
             System.out.printf("%-10s%10s\n" , entry.getKey(), entry.getValue());
